@@ -1,256 +1,27 @@
 <router-outlet></router-outlet>
 
-<!-- Hero Section -->
-<section
-  class="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 flex items-center justify-center"
->
-  <div class="container mx-auto px-4 text-center">
-    <div class="animate-fade-in">
-      <h1 class="text-6xl font-bold text-gray-900 mb-6">
-        Hi, I'm <span class="text-primary-600">Your Name</span>
-      </h1>
-      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-        Aspiring Software Engineer passionate about creating innovative
-        solutions and learning new technologies.
-      </p>
-      <div class="flex gap-4 justify-center">
-        <button class="btn-primary">View Projects</button>
-        <button class="btn-secondary">Contact Me</button>
-      </div>
-    </div>
-  </div>
+<!-- Header Component -->
+<app-header></app-header>
+
+<!-- Hero Component -->
+<app-hero></app-hero>
+
+<!-- About Component -->
+<section id="about">
+  <app-about></app-about>
 </section>
 
-<!-- About Section -->
-<section class="py-20 bg-white">
-  <div class="container mx-auto px-4">
-    <h2 class="section-title text-center">About Me</h2>
-    <p class="section-subtitle text-center">Get to know me better</p>
-
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="space-y-6">
-        <p class="text-lg text-gray-700 leading-relaxed">
-          I'm a computer science student with a passion for web development and
-          software engineering. I love building applications that solve
-          real-world problems and create meaningful user experiences.
-        </p>
-        <p class="text-lg text-gray-700 leading-relaxed">
-          Currently pursuing my degree while working on personal projects to
-          expand my skills in modern web technologies like Angular, React, and
-          Node.js.
-        </p>
-        <div class="flex gap-4">
-          <button class="btn-primary">Download Resume</button>
-          <button class="btn-secondary">Learn More</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3 class="text-2xl font-semibold mb-4">Quick Facts</h3>
-        <div class="space-y-3">
-          <div class="flex justify-between">
-            <span class="text-gray-600">Education:</span>
-            <span class="font-medium">Computer Science</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-gray-600">Experience:</span>
-            <span class="font-medium">2+ Years</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-gray-600">Location:</span>
-            <span class="font-medium">Your City</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-gray-600">Interests:</span>
-            <span class="font-medium">Web Dev, AI, Gaming</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- Experience Component -->
+<section id="experience">
+  <app-experience></app-experience>
 </section>
 
-<!-- Skills Section -->
-<section class="py-20 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <h2 class="section-title text-center">Skills & Technologies</h2>
-    <p class="section-subtitle text-center">Technologies I work with</p>
-
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="card">
-        <h3 class="text-xl font-semibold mb-4 text-primary-600">Frontend</h3>
-        <div class="space-y-2">
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>Angular</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>React</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>TypeScript</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>Tailwind CSS</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3 class="text-xl font-semibold mb-4 text-primary-600">Backend</h3>
-        <div class="space-y-2">
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>Node.js</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>Python</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>Django</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>PostgreSQL</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3 class="text-xl font-semibold mb-4 text-primary-600">Tools</h3>
-        <div class="space-y-2">
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>Git & GitHub</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>VS Code</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>Docker</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
-            <span>Figma</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- Skills Component -->
+<section id="skills">
+  <app-skills></app-skills>
 </section>
 
-<!-- Projects Section -->
-<section class="py-20 bg-white">
-  <div class="container mx-auto px-4">
-    <h2 class="section-title text-center">Featured Projects</h2>
-    <p class="section-subtitle text-center">Some of my recent work</p>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="card group hover:shadow-xl transition-shadow">
-        <div
-          class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
-        >
-          <span class="text-gray-400">Project Image</span>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Todo App</h3>
-        <p class="text-gray-600 mb-4">
-          A full-stack todo application built with Angular and Node.js
-        </p>
-        <div class="flex gap-2">
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >Angular</span
-          >
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >TypeScript</span
-          >
-        </div>
-      </div>
-
-      <div class="card group hover:shadow-xl transition-shadow">
-        <div
-          class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
-        >
-          <span class="text-gray-400">Project Image</span>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
-        <p class="text-gray-600 mb-4">
-          Modern e-commerce solution with React and Django
-        </p>
-        <div class="flex gap-2">
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >React</span
-          >
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >Django</span
-          >
-        </div>
-      </div>
-
-      <div class="card group hover:shadow-xl transition-shadow">
-        <div
-          class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
-        >
-          <span class="text-gray-400">Project Image</span>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Portfolio Website</h3>
-        <p class="text-gray-600 mb-4">
-          Personal portfolio built with Angular and Tailwind CSS
-        </p>
-        <div class="flex gap-2">
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >Angular</span
-          >
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >Tailwind</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact Section -->
-<section class="py-20 bg-gray-50">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="section-title">Get In Touch</h2>
-    <p class="section-subtitle">Let's work together on something amazing</p>
-
-    <div class="max-w-md mx-auto">
-      <div class="flex gap-4 justify-center mb-8">
-        <a
-          href="#"
-          class="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
-        >
-          <span class="text-gray-600">📧</span>
-        </a>
-        <a
-          href="#"
-          class="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
-        >
-          <span class="text-gray-600">💼</span>
-        </a>
-        <a
-          href="#"
-          class="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
-        >
-          <span class="text-gray-600">🐙</span>
-        </a>
-      </div>
-
-      <button class="btn-primary">Send Message</button>
-    </div>
-  </div>
+<!-- Projects Component -->
+<section id="projects">
+  <app-projects></app-projects>
 </section>

@@ -1,0 +1,115 @@
+<section class="py-10 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="section-title text-center mb-8">Experience</h2>
+
+    <!-- Timeline at the top -->
+    <div class="w-full flex justify-center">
+      <div class="relative flex flex-col items-center max-w-xl mx-auto w-full">
+        <!-- Timeline track (single line) -->
+        <div
+          class="absolute top-1/2 left-0 right-0 h-1 bg-gray-300 z-0"
+          style="transform: translateY(-50%)"
+        ></div>
+        <!-- Timeline icons -->
+        <div
+          class="flex justify-between items-center w-full relative z-10 mb-16"
+        >
+          <ng-container *ngFor="let exp of experiences; let i = index">
+            <div
+              class="timeline-item flex flex-col items-center transition-all duration-300 cursor-pointer"
+              [ngClass]="{
+                'scale-110 z-10': activeIndex === i,
+                'opacity-60': activeIndex !== i
+              }"
+              (click)="goTo(i)"
+            >
+              <div class="w-32 h-24 rounded-lg overflow-visible">
+                <img
+                  [src]="exp.logo"
+                  [alt]="exp.company + ' logo'"
+                  class="w-full h-full object-contain"
+                />
+              </div>
+              <div class="text-xs text-gray-500 mt-2">{{ exp.date }}</div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience Cards: horizontal scrollable row with fade overlays -->
+    <div class="relative w-full max-w-4xl mx-auto" style="min-height: 500px">
+      <!-- Left Fade -->
+      <div
+        class="pointer-events-none absolute left-0 top-0 h-full w-24 z-20"
+        style="background: linear-gradient(to right, #f9fafb 90%, transparent)"
+      ></div>
+      <!-- Right Fade -->
+      <div
+        class="pointer-events-none absolute right-0 top-0 h-full w-24 z-20"
+        style="background: linear-gradient(to left, #f9fafb 90%, transparent)"
+      ></div>
+      <!-- Carousel -->
+      <div
+        #cardRow
+        class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory w-full min-h-[500px] items-center"
+        (scroll)="onCardRowScroll()"
+      >
+        <!-- Left spacer -->
+        <div class="flex-shrink-0 w-full max-w-xl mx-4"></div>
+        <div
+          *ngFor="let exp of experiences; let i = index"
+          class="flex-shrink-0 w-full max-w-xl mx-4 snap-center transition-all duration-300"
+          [ngClass]="{
+            'scale-105 opacity-100 z-10': activeIndex === i,
+            'opacity-30 scale-95 pointer-events-none': activeIndex !== i
+          }"
+        >
+          <div
+            class="bg-white rounded-xl shadow-lg p-8 border border-gray-100 transition-all duration-300 h-full flex flex-col justify-center"
+          >
+            <h3 class="text-2xl font-semibold text-primary-700 mb-1">
+              {{ exp.title }}
+            </h3>
+            <div class="text-gray-600 text-base mb-2">{{ exp.company }}</div>
+            <div class="text-gray-400 text-sm mb-4">{{ exp.date }}</div>
+            <ul class="space-y-2">
+              <li *ngFor="let bullet of exp.bullets" class="flex items-start">
+                <span
+                  class="w-2 h-2 bg-primary-400 rounded-full mt-2 mr-3 flex-shrink-0"
+                ></span>
+                <span>{{ bullet }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Right spacer -->
+        <div class="flex-shrink-0 w-full max-w-xl mx-4"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Fade-in animation -->
+<style>
+  .animate-fade-in {
+    animation: fadeIn 0.5s;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

@@ -1,0 +1,21 @@
+<a
+  [href]="link"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="block transition-transform duration-300 hover:scale-110"
+>
+  <div class="w-24 h-24 rounded-lg overflow-visible bg-transparent">
+    <img
+      [src]="imagePath"
+      [alt]="altText"
+      class="w-full h-full object-contain"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+    />
+    <div
+      class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 text-xs font-medium"
+      style="display: none"
+    >
+      {{ altText }}
+    </div>
+  </div>
+</a>
