@@ -2,72 +2,60 @@
   <div class="container mx-auto px-4">
     <h2 class="section-title text-center">Projects</h2>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="card group hover:shadow-xl transition-shadow">
-        <div
-          class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
-        >
-          <span class="text-gray-400">Project Image</span>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Todo App</h3>
-        <p class="text-gray-600 mb-4">
-          A full-stack todo application built with Angular and Node.js
-        </p>
-        <div class="flex gap-2">
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >Angular</span
-          >
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >TypeScript</span
-          >
-        </div>
-      </div>
+    <div class="mb-2 text-xs text-red-500">
+      loopedProjects: {{ loopedProjects?.length }} | visibleCards:
+      {{ visibleCards }}
+    </div>
 
-      <div class="card group hover:shadow-xl transition-shadow">
+    <div
+      #carousel
+      class="projects-carousel flex overflow-x-auto gap-8 py-4 hide-scrollbar"
+      (scroll)="onScroll()"
+    >
+      <ng-container
+        *ngIf="loopedProjects && loopedProjects.length > 0; else fallback"
+      >
         <div
-          class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
+          *ngFor="let project of loopedProjects"
+          class="card min-w-[300px] max-w-[350px] flex-shrink-0 group hover:shadow-xl transition-shadow"
         >
-          <span class="text-gray-400">Project Image</span>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
-        <p class="text-gray-600 mb-4">
-          Modern e-commerce solution with React and Django
-        </p>
-        <div class="flex gap-2">
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >React</span
+          <div
+            class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
           >
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >Django</span
-          >
+            <span class="text-gray-400">Project Image</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{{ project.title }}</h3>
+          <p class="text-gray-600 mb-4">{{ project.description }}</p>
+          <div class="flex gap-2">
+            <span
+              *ngFor="let tag of project.tags"
+              class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
+              >{{ tag }}</span
+            >
+          </div>
         </div>
-      </div>
-
-      <div class="card group hover:shadow-xl transition-shadow">
+      </ng-container>
+      <ng-template #fallback>
         <div
-          class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
+          *ngFor="let project of projects"
+          class="card min-w-[300px] max-w-[350px] flex-shrink-0 group hover:shadow-xl transition-shadow"
         >
-          <span class="text-gray-400">Project Image</span>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Portfolio Website</h3>
-        <p class="text-gray-600 mb-4">
-          Personal portfolio built with Angular and Tailwind CSS
-        </p>
-        <div class="flex gap-2">
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >Angular</span
+          <div
+            class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
           >
-          <span
-            class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-            >Tailwind</span
-          >
+            <span class="text-gray-400">Project Image</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{{ project.title }}</h3>
+          <p class="text-gray-600 mb-4">{{ project.description }}</p>
+          <div class="flex gap-2">
+            <span
+              *ngFor="let tag of project.tags"
+              class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
+              >{{ tag }}</span
+            >
+          </div>
         </div>
-      </div>
+      </ng-template>
     </div>
   </div>
 </section>

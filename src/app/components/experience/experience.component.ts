@@ -42,12 +42,14 @@ export class ExperienceComponent implements AfterViewInit {
       ],
     },
     {
-      title: 'Research Assistant',
-      company: 'UIUC',
-      date: '2023 - Present',
-      logo: '/assets/images/experience/uiuc.png',
+      title: 'Swimming Instructor',
+      company: 'Bear Paddle Swim School, Aurora, IL',
+      date: 'June 2021 – Aug. 2021',
+      logo: '/assets/images/experience/bearpaddle.png', 
       bullets: [
-        'Working on research projects related to computer science. Developing algorithms and implementing solutions for real-world problems.',
+        'Taught life-saving swimming fundamentals to over 40 children aged 6 months to 13 years, promoting water safety and confidence in the pool.',
+        'Provided personalized instruction and managed the safety of multiple children simultaneously, ensuring a secure and supportive learning environment.',
+        'Effectively kept children engaged and entertained during lessons, contributing to improved customer retention and positive feedback from parents.',
       ],
     },
   ];
