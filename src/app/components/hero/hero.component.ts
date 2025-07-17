@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { DarkVeilComponent } from '../dark-veil/dark-veil.component';
 
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
+  imports: [DarkVeilComponent],
 })
 export class HeroComponent implements OnInit {
   ngOnInit() {
