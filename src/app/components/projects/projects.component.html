@@ -1,22 +1,17 @@
 <section class="py-10 bg-white">
   <div class="container mx-auto px-4">
     <h2 class="section-title text-center">Projects</h2>
-
-    <div class="mb-2 text-xs text-red-500">
-      loopedProjects: {{ loopedProjects?.length }} | visibleCards:
-      {{ visibleCards }}
-    </div>
-
     <div
       #carousel
       class="projects-carousel flex overflow-x-auto gap-8 py-4 hide-scrollbar"
-      (scroll)="onScroll()"
+      (mouseenter)="onMouseEnter()"
+      (mouseleave)="onMouseLeave()"
     >
       <ng-container
-        *ngIf="loopedProjects && loopedProjects.length > 0; else fallback"
+        *ngIf="displayProjects && displayProjects.length > 0; else fallback"
       >
         <div
-          *ngFor="let project of loopedProjects"
+          *ngFor="let project of displayProjects"
           class="card min-w-[300px] max-w-[350px] flex-shrink-0 group hover:shadow-xl transition-shadow"
         >
           <div

@@ -16,7 +16,7 @@
         ></div>
         <!-- Timeline icons container: Holds all company logos in a horizontal row -->
         <div
-          class="flex justify-between items-center w-full relative z-10 mb-16"
+          class="flex justify-between items-center w-full relative z-10 mb-8"
         >
           <!-- Loop through each experience to create timeline items -->
           <ng-container *ngFor="let exp of experiences; let i = index">
@@ -61,7 +61,7 @@
       <!-- Main Carousel Container: Horizontal scrollable row of experience cards -->
       <div
         #cardRow
-        class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory w-full min-h-[500px] items-center"
+        class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory w-full min-h-[600px] items-center"
         (scroll)="onCardRowScroll()"
       >
         <!-- Left Spacer: Ensures first card is centered when scrolled to start -->

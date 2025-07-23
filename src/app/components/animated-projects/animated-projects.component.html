@@ -1,0 +1,47 @@
+<h2 class="section-title text-center mb-8" style="padding-top: 2.5rem">
+  Projects
+</h2>
+<div
+  #wrapper
+  class="infinite-scroll-wrapper"
+  [ngStyle]="{ 'max-height': maxHeight }"
+>
+  <div
+    #container
+    class="infinite-scroll-container"
+    [ngStyle]="{ width: width, transform: getTiltTransform() }"
+  >
+    <div
+      *ngFor="let item of items"
+      class="infinite-scroll-item"
+      [ngStyle]="{ height: itemMinHeight + 'px', 'margin-top': negativeMargin }"
+    >
+      <div class="infinite-scroll-title">
+        {{ item.title }}
+      </div>
+      <img
+        class="infinite-scroll-image mb-4"
+        [src]="item.image"
+        alt="{{ item.title }} image"
+      />
+      <div class="infinite-scroll-description">
+        {{ item.description }}
+      </div>
+      <div class="infinite-scroll-tags-row">
+        <div class="infinite-scroll-tags">
+          <span *ngFor="let tag of item.tags" class="infinite-scroll-tag">{{
+            tag
+          }}</span>
+        </div>
+        <button
+          *ngIf="item.link"
+          class="visit-btn"
+          (click)="visitProject(item.link, $event)"
+          tabindex="0"
+        >
+          Visit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
