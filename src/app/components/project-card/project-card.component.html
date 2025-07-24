@@ -1,0 +1,28 @@
+<app-glare-hover
+  [glareColor]="glareColor"
+  [glareOpacity]="glareOpacity"
+  [glareAngle]="glareAngle"
+  [glareSize]="glareSize"
+  [transitionDuration]="transitionDuration"
+  [playOnce]="playOnce"
+  [borderRadius]="'0.75rem'"  
+>
+  <a [href]="link" target="_blank" rel="noopener noreferrer" class="card group hover:shadow-xl transition-shadow block p-4">
+    <div class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center overflow-hidden">
+      <img *ngIf="image" [src]="image" alt="{{ title }}" class="object-cover h-full w-full" />
+      <span *ngIf="!image" class="text-gray-400">Project Image</span>
+    </div>
+
+    <h3 class="text-xl font-semibold mb-2">{{ title }}</h3>
+    <p class="text-gray-600 mb-4">{{ description }}</p>
+
+    <div class="flex gap-2 flex-wrap" *ngIf="technologies?.length">
+      <span
+        *ngFor="let tech of technologies"
+        class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
+      >
+        {{ tech }}
+      </span>
+    </div>
+  </a>
+</app-glare-hover>

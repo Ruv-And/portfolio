@@ -1,56 +1,31 @@
 <section class="py-10 bg-white">
   <div class="container mx-auto px-4">
     <h2 class="section-title text-center">Projects</h2>
-    <div
-      #carousel
-      class="projects-carousel flex overflow-x-auto gap-8 py-4 hide-scrollbar"
-      (mouseenter)="onMouseEnter()"
-      (mouseleave)="onMouseLeave()"
-    >
-      <ng-container
-        *ngIf="displayProjects && displayProjects.length > 0; else fallback"
-      >
-        <div
-          *ngFor="let project of displayProjects"
-          class="card min-w-[300px] max-w-[350px] flex-shrink-0 group hover:shadow-xl transition-shadow"
-        >
-          <div
-            class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
-          >
-            <span class="text-gray-400">Project Image</span>
-          </div>
-          <h3 class="text-xl font-semibold mb-2">{{ project.title }}</h3>
-          <p class="text-gray-600 mb-4">{{ project.description }}</p>
-          <div class="flex gap-2">
-            <span
-              *ngFor="let tag of project.tags"
-              class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-              >{{ tag }}</span
-            >
-          </div>
-        </div>
-      </ng-container>
-      <ng-template #fallback>
-        <div
-          *ngFor="let project of projects"
-          class="card min-w-[300px] max-w-[350px] flex-shrink-0 group hover:shadow-xl transition-shadow"
-        >
-          <div
-            class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
-          >
-            <span class="text-gray-400">Project Image</span>
-          </div>
-          <h3 class="text-xl font-semibold mb-2">{{ project.title }}</h3>
-          <p class="text-gray-600 mb-4">{{ project.description }}</p>
-          <div class="flex gap-2">
-            <span
-              *ngFor="let tag of project.tags"
-              class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-              >{{ tag }}</span
-            >
-          </div>
-        </div>
-      </ng-template>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <app-project-card
+        title="Todo App"
+        description="A full-stack todo application built with Angular and Node.js"
+        [technologies]="['Angular', 'TypeScript']"
+        image=""
+        link="https://your-todo-app-link.com"
+      ></app-project-card>
+
+      <app-project-card
+        title="E-commerce Platform"
+        description="Modern e-commerce solution with React and Django"
+        [technologies]="['React', 'Django']"
+        image=""
+        link="https://your-ecommerce-link.com"
+      ></app-project-card>
+
+      <app-project-card
+        title="Portfolio Website"
+        description="Personal portfolio built with Angular and Tailwind CSS"
+        [technologies]="['Angular', 'Tailwind']"
+        image=""
+        link="https://your-portfolio.com"
+      ></app-project-card>
     </div>
   </div>
 </section>

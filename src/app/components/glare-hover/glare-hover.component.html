@@ -1,0 +1,23 @@
+<div
+  #overlay
+  class="glare-overlay"
+  [ngStyle]="{
+    width: width,
+    height: height,
+    borderRadius: borderRadius,
+    border: borderColor ? '1px solid ' + borderColor : undefined,
+    background: background
+  }"
+>
+  <!-- Glare overlay -->
+  <div
+    #overlay
+    class="absolute inset-0 pointer-events-none z-10"
+    style="transition: opacity 0.3s ease;"
+  ></div>
+
+  <!-- Content (e.g., project card) -->
+  <div class="relative z-20">
+    <ng-content></ng-content>
+  </div>
+</div>
