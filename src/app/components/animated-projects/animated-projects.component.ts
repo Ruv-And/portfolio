@@ -46,39 +46,14 @@ export class AnimatedProjectsComponent implements AfterViewInit, OnDestroy {
   @Input() maxHeight: string = '100%'; // Max height of the scroll area
   @Input() negativeMargin: string = '-0.5em'; // Negative margin between items
   @Input() items: InfiniteScrollItem[] = [
-    // List of items to display
-    {
-      title: 'Animated Todo App',
-      description:
-        'A visually engaging todo app with smooth infinite scrolling.',
-      tags: ['Angular', 'GSAP', 'UI'],
-      image:
-        'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80',
-      link: 'https://github.com/example/todo-app',
-    },
-    {
-      title: 'Portfolio Carousel',
-      description: 'Showcase your projects in a beautiful, animated carousel.',
-      tags: ['Portfolio', 'Carousel', 'Animation'],
-      image:
-        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
-      link: 'https://github.com/example/portfolio-carousel',
-    },
-    {
-      title: 'E-commerce Slider',
-      description: 'Highlight products with a seamless, interactive slider.',
-      tags: ['E-commerce', 'Slider', 'UX'],
-      image:
-        'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80',
-      link: 'https://github.com/example/ecommerce-slider',
-    },
   ];
   @Input() itemMinHeight: number = 400; // Minimum height for each item
   @Input() isTilted: boolean = true; // Whether to apply tilt effect
   @Input() tiltDirection: 'left' | 'right' = 'left'; // Direction of tilt
   @Input() autoplay: boolean = true; // Whether to auto-scroll
   @Input() autoplaySpeed: number = 0.1; // Speed of auto-scroll
-  @Input() autoplayDirection: 'down' | 'up' = 'down'; // Direction of auto-scroll
+  // @Input() autoplayDirection: 'down' | 'up' = 'down'; // Direction of auto-scroll
+  @Input() autoplayDirection: 'left' | 'right' = 'right'; // Direction of auto-scroll
   @Input() pauseOnHover: boolean = true; // Whether to pause on hover
   @Input() itemSpacing: number = 20; //space between items in px
 
@@ -117,37 +92,70 @@ export class AnimatedProjectsComponent implements AfterViewInit, OnDestroy {
     const totalItemHeight = itemHeight + itemMarginTop;
     const totalHeight =
       itemHeight * this.items.length + itemMarginTop * (this.items.length - 1);
+    const itemWidth = firstItem.offsetWidth;
+    const itemMarginRight = parseFloat(itemStyle.marginRight) || 0;
+    const totalItemWidth = itemWidth + itemMarginRight;
+    const totalWidth = totalItemWidth * divItems.length;
+    // itemWidth * this.items.length + itemMarginRight * (this.items.length - 1);
 
     // GSAP wrap function for infinite looping
-    const wrapFn = gsap.utils.wrap(-totalHeight, totalHeight);
-
+    // const wrapFn = gsap.utils.wrap(-totalHeight, totalHeight);
+    const wrapFn = gsap.utils.wrap(-totalWidth, totalWidth);
     // Set initial y position for each item
     divItems.forEach((child, i) => {
-      const y = i * totalItemHeight;
-      gsap.set(child, { y });
+      // const y = i * totalItemHeight;
+      // gsap.set(child, { y });
+      const x = i * totalItemWidth;
+      gsap.set(child, { x });
     });
 
     // Create GSAP Observer for drag/scroll interaction
     this.observer = Observer.create({
       target: container,
       type: 'wheel,touch,pointer',
-      preventDefault: true,
+      // preventDefault: true,
       onPress: ({ target }: any) => {
         (target as HTMLElement).style.cursor = 'grabbing';
       },
       onRelease: ({ target }: any) => {
         (target as HTMLElement).style.cursor = 'grab';
       },
-      onChange: ({ deltaY, isDragging, event }: any) => {
-        const d = event.type === 'wheel' ? -deltaY : deltaY;
+      // // onChange: ({ deltaY, isDragging, event }: any) => {
+      // onChange: ({ deltaX, isDragging, event }: any) => {
+      //   // const d = event.type === 'wheel' ? -deltaY : deltaY;
+      //   const d = event.type === 'wheel' ? -deltaX : deltaX;
+      //   const distance = isDragging ? d * 5 : d * 10;
+      //   divItems.forEach((child) => {
+      //     gsap.to(child, {
+      //       duration: 0.5,
+      //       ease: 'expo.out',
+      //       // y: `+=${distance}`,
+      //       x: `+=${distance}`,
+      //       modifiers: {
+      //         // y: gsap.utils.unitize(wrapFn),
+      //         x: gsap.utils.unitize(wrapFn),
+      //       },
+      //     });
+      //   });
+      // },
+      onChange: ({ deltaX, deltaY, isDragging, event }: any) => {
+        const isHorizontalScroll =
+          event.type === 'wheel' ? Math.abs(deltaX) > Math.abs(deltaY) : true;
+
+        if (!isHorizontalScroll) return; // Let vertical scroll happen naturally
+
+        event.preventDefault(); // Only stop if user is scrolling sideways
+
+        const d = event.type === 'wheel' ? -deltaX : deltaX;
         const distance = isDragging ? d * 5 : d * 10;
+
         divItems.forEach((child) => {
           gsap.to(child, {
             duration: 0.5,
             ease: 'expo.out',
-            y: `+=${distance}`,
+            x: `+=${distance}`,
             modifiers: {
-              y: gsap.utils.unitize(wrapFn),
+              x: gsap.utils.unitize(wrapFn),
             },
           });
         });
@@ -156,15 +164,18 @@ export class AnimatedProjectsComponent implements AfterViewInit, OnDestroy {
 
     // Autoplay logic (auto-scroll)
     if (this.autoplay) {
-      const directionFactor = this.autoplayDirection === 'down' ? 1 : -1;
+      // const directionFactor = this.autoplayDirection === 'down' ? 1 : -1;
+      const directionFactor = this.autoplayDirection === 'right' ? 1 : -1;
       const speedPerFrame = this.autoplaySpeed * directionFactor;
 
       const tick = () => {
         divItems.forEach((child) => {
           gsap.set(child, {
-            y: `+=${speedPerFrame}`,
+            // y: `+=${speedPerFrame}`,
+            x: `+=${speedPerFrame}`,
             modifiers: {
-              y: gsap.utils.unitize(wrapFn),
+              // y: gsap.utils.unitize(wrapFn),
+              x: gsap.utils.unitize(wrapFn),
             },
           });
         });

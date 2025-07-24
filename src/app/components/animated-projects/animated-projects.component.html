@@ -9,33 +9,48 @@
   <div
     #container
     class="infinite-scroll-container"
-    [ngStyle]="{ width: width, transform: getTiltTransform() }"
+    [ngStyle]="{ 
+      width: width, 
+      transform: getTiltTransform(), 
+      display: 'flex', 
+      'flex-direction': 'row',
+     }"
   >
-    <div
+    <!-- <div
       *ngFor="let item of items"
       class="infinite-scroll-item"
       [ngStyle]="{ height: itemMinHeight + 'px', 'margin-top': negativeMargin }"
+    > -->
+    <div
+      *ngFor="let item of items"
+      class="card min-w-[300px] max-w-[350px] flex-shrink-0 group hover:shadow-xl transition-shadow"
+      [ngStyle]="{
+        height: itemMinHeight + 'px',
+        'margin-right': itemSpacing + 'px'
+      }"
     >
-      <div class="infinite-scroll-title">
-        {{ item.title }}
+      <div
+        class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center"
+      >
+        <img
+          *ngIf="item.image"
+          [src]="item.image"
+          alt="{{ item.title }} image"
+          class="object-cover w-full h-full rounded-lg"
+        />
+        <span *ngIf="!item.image" class="text-gray-400">Project Image</span>
       </div>
-      <img
-        class="infinite-scroll-image mb-4"
-        [src]="item.image"
-        alt="{{ item.title }} image"
-      />
-      <div class="infinite-scroll-description">
-        {{ item.description }}
-      </div>
-      <div class="infinite-scroll-tags-row">
-        <div class="infinite-scroll-tags">
-          <span *ngFor="let tag of item.tags" class="infinite-scroll-tag">{{
-            tag
-          }}</span>
-        </div>
+      <h3 class="text-xl font-semibold mb-2">{{ item.title }}</h3>
+      <p class="text-gray-600 mb-4">{{ item.description }}</p>
+      <div class="flex gap-2 w-full items-center">
+        <span
+          *ngFor="let tag of item.tags"
+          class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
+          >{{ tag }}</span
+        >
         <button
           *ngIf="item.link"
-          class="visit-btn"
+          class="visit-btn ml-auto"
           (click)="visitProject(item.link, $event)"
           tabindex="0"
         >

@@ -7,6 +7,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AnimatedProjectsComponent } from './components/animated-projects/animated-projects.component';
+import { AnimatedProjectsComponent2 } from './components/animated-projects-2/animated-projects-2.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ import { AnimatedProjectsComponent } from './components/animated-projects/animat
     SkillsComponent,
     ProjectsComponent,
     AnimatedProjectsComponent,
-  ],
+    AnimatedProjectsComponent2,
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -59,6 +61,22 @@ export class AppComponent {
       image:
         'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80',
       link: 'https://github.com/example/todo-app',
+    },
+    {
+      title: 'Snake Learner',
+      description: 'Learning model that learns how to play snake by itself.',
+      tags: ['Python', 'API', 'Maps'],
+      image:
+        'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80',
+      link: 'https://github.com/example/snake',
+    },
+    {
+      title: 'Snipiddy',
+      description: 'Get recommendations for menu items by simply uploading a picture and stating your preferences.',
+      tags: ['Next', 'API', 'Postgres'],
+      image:
+        'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80',
+      link: 'https://github.com/example/snipiddy',
     },
   ];
 }
