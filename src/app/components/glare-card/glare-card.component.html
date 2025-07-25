@@ -1,53 +1,33 @@
-<div
-  class="relative grid place-items-center overflow-hidden border cursor-pointer"
-  [ngClass]="className"
-  [ngStyle]="{
-    width: width,
-    height: height,
-    background: background,
-    borderRadius: borderRadius,
-    borderColor: borderColor
-  }"
-  (mouseenter)="animateIn()"
-  (mouseleave)="animateOut()"
->
-  <!-- Content first -->
-  <a
-    *ngIf="link; else contentBlock"
-    [href]="link"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="card group hover:shadow-xl transition-shadow block p-4 w-full h-full relative z-10"
-  >
-    <div class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center overflow-hidden">
-      <img
-        *ngIf="image"
-        [src]="image"
-        [alt]="title"
-        class="object-cover h-full w-full"
-      />
-      <span *ngIf="!image" class="text-gray-400">Project Image</span>
-    </div>
+<div class="relative grid place-items-center overflow-hidden border cursor-pointer" [ngClass]="className" [ngStyle]="{
+        width: width,
+        height: height,
+        background: background,
+        borderRadius: borderRadius,
+        borderColor: borderColor
+    }" style="position: relative; z-index: 0;" (mouseenter)="animateIn()" (mouseleave)="animateOut()">
+    <div #overlay [ngStyle]="overlayStyle"></div>
 
-    <h3 class="text-xl font-semibold mb-2">{{ title }}</h3>
-    <p class="text-gray-600 mb-4">{{ description }}</p>
+    <a *ngIf="link; else contentBlock" [href]="link" target="_blank" rel="noopener noreferrer"
+        class="card group hover:shadow-xl transition-shadow block p-4 w-full h-full z-20 relative">
 
-    <div class="flex gap-2 flex-wrap" *ngIf="technologies?.length">
-      <span
-        *ngFor="let tech of technologies"
-        class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded"
-      >
-        {{ tech }}
-      </span>
-    </div>
-  </a>
+        <div class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center overflow-hidden">
+            <img *ngIf="image" [src]="image" [alt]="title" class="object-cover h-full w-full" />
+            <span *ngIf="!image" class="text-gray-400">Project Image</span>
+        </div>
 
-  <ng-template #contentBlock>
-    <div class="relative z-10 w-full h-full">
-      <ng-content></ng-content>
-    </div>
-  </ng-template>
+        <h3 class="text-xl font-semibold mb-2">{{ title }}</h3>
+        <p class="text-gray-600 mb-4">{{ description }}</p>
 
-  <!-- Overlay LAST to be visually on top -->
-  <div #overlay class="absolute inset-0 z-50 pointer-events-none" [ngStyle]="overlayStyle"></div>
+        <div class="flex gap-2 flex-wrap" *ngIf="technologies?.length">
+            <span *ngFor="let tech of technologies" class="px-2 py-1 bg-primary-100 text-primary-700 text-sm rounded">
+                {{ tech }}
+            </span>
+        </div>
+    </a>
+
+    <ng-template #contentBlock>
+        <div class="relative z-20 w-full h-full">
+            <ng-content></ng-content>
+        </div>
+    </ng-template>
 </div>
