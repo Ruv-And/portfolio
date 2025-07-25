@@ -18,7 +18,7 @@ export class ProjectCardComponent {
   // glare
   @Input() glareColor: string = '#ffffff';
   @Input() glareOpacity: number = 0.3;
-  @Input() glareAngle: number = -30;
+  @Input() glareAngle: number = -45;
   @Input() glareSize: number = 300;
   @Input() transitionDuration: number = 800;
   @Input() playOnce: boolean = false;

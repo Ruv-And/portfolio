@@ -4,29 +4,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        dark: '#0c0a13',
         primary: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
+          DEFAULT: '#440439',
+          hover: '#5d0561',
+          border: '#8a42a1',
+          light: '#d58cff',
         },
-        secondary: {
-          50: "#f8fafc",
-          100: "#f1f5f9",
-          200: "#e2e8f0",
-          300: "#cbd5e1",
-          400: "#94a3b8",
-          500: "#64748b",
-          600: "#475569",
-          700: "#334155",
-          800: "#1e293b",
-          900: "#0f172a",
+        accent: {
+          text: '#eae4f2',
+          soft: '#b77edc',
+          bg: '#2e0b26',
         },
       },
       fontFamily: {

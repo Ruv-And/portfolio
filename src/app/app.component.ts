@@ -8,6 +8,7 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AnimatedProjectsComponent } from './components/animated-projects/animated-projects.component';
 import { AnimatedProjectsComponent2 } from './components/animated-projects-2/animated-projects-2.component';
+import { GlareCardComponent } from './components/glare-card/glare-card.component';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import { AnimatedProjectsComponent2 } from './components/animated-projects-2/ani
     ProjectsComponent,
     AnimatedProjectsComponent,
     AnimatedProjectsComponent2,
+    GlareCardComponent,
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

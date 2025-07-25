@@ -8,60 +8,87 @@
 /* Enable smooth scrolling globally */
 html {
   scroll-behavior: smooth;
+  background-color: #0c0a13;
+  /* deep near-black */
+  color: #eae4f2;
+  /* soft purple-white */
 }
 
 /* Custom component styles */
 @layer components {
+
+  /* Base themes */
+  .bg-dark {
+    background-color: #440439;
+    color: white;
+  }
+
+  .text-primary {
+    @apply text-primary-light;
+  }
+
+  .text-accent {
+    @apply text-accent-soft;
+  }
+
+  .border-primary {
+    @apply border-primary-border;
+  }
+
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-primary hover:bg-primary-hover text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 shadow-md;
   }
 
   .btn-secondary {
-    @apply bg-secondary-200 hover:bg-secondary-300 text-secondary-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-accent-bg hover:bg-primary-border text-primary-light font-medium py-2 px-4 rounded-lg transition-colors duration-200;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-lg p-6 border border-gray-100;
+    @apply bg-gradient-to-br from-[#1a0d1e] to-primary text-accent-text border border-primary-border rounded-xl shadow-xl p-6;
+  }
+
+  .school-logo {
+    @apply transition-all duration-200 hover:shadow-[0_0_10px_#8a42a1];
+  }
+
+  .fallback-logo {
+    @apply bg-accent-bg rounded-full flex items-center justify-center text-primary-light font-bold;
   }
 
   .section-title {
-    @apply text-3xl font-bold text-gray-900 mb-4;
+    @apply text-3xl font-bold text-primary-light mb-4;
   }
 
   .section-subtitle {
-    @apply text-lg text-gray-600 mb-8;
-  }
-
-  /* Education Timeline Styles */
-  .education-timeline {
-    @apply bg-white rounded-xl shadow-lg p-6 border border-gray-100;
+    @apply text-lg text-accent mb-8;
   }
 
   .education-item {
     @apply transition-transform duration-200 hover:scale-105;
   }
 
-  .school-logo {
-    @apply transition-all duration-200 hover:shadow-md;
+  .arrow-left {
+    @apply bg-primary transition-all duration-300;
   }
 
-  .arrow-left {
-    @apply transition-all duration-300;
+  .arrow-head {
+    @apply border-r-primary;
   }
 
   .education-timeline:hover .arrow-left {
-    @apply bg-primary-400;
+    @apply bg-primary-hover;
   }
 
   .education-timeline:hover .arrow-head {
-    @apply border-r-primary-400;
+    @apply border-r-primary-hover;
   }
 }
 
 /* Gradient Mesh Background */
 .gradient-mesh {
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, #1b0b1f 0%, #440439 100%);
   position: relative;
+  z-index: 0;
 }
 
 .gradient-mesh::before {
@@ -71,11 +98,9 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
-    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(255, 255, 255, 0.15) 0%,
-    transparent 50%
-  );
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(213, 140, 255, 0.08) 0%,
+      transparent 50%);
   pointer-events: none;
   transition: all 0.3s ease;
   z-index: 1;

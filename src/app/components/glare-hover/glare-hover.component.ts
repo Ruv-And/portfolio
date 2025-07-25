@@ -17,11 +17,11 @@ import {
   standalone: true,
 })
 export class GlareHoverComponent implements AfterViewInit {
-  @Input() width?: string; // optional
-  @Input() height?: string; // optional
-  @Input() borderRadius?: string;
-  @Input() borderColor?: string;
-  @Input() background?: string = 'rgba(255,0,0,0.1)'; // default to transparent
+  @Input() width: string = '500px';
+  @Input() height: string = '500px';
+  @Input() background: string = '#000';
+  @Input() borderRadius: string = '10px';
+  @Input() borderColor: string = '#333';
   @Input() glareColor: string = '#ffffff';
   @Input() glareOpacity: number = 0.5;
   @Input() glareAngle: number = -45;
@@ -29,8 +29,7 @@ export class GlareHoverComponent implements AfterViewInit {
   @Input() transitionDuration: number = 650;
   @Input() playOnce: boolean = false;
 
-  @ViewChild('overlay', { static: true })
-  overlayRef!: ElementRef<HTMLDivElement>;
+  @ViewChild('overlay', { static: true }) overlayRef!: ElementRef<HTMLDivElement>;
 
   constructor(private renderer: Renderer2) {}
 

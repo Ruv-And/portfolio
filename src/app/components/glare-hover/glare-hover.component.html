@@ -1,23 +1,14 @@
 <div
-  #overlay
-  class="glare-overlay"
+  class="relative grid place-items-center overflow-hidden border cursor-pointer"
   [ngStyle]="{
     width: width,
     height: height,
+    background: background,
     borderRadius: borderRadius,
-    border: borderColor ? '1px solid ' + borderColor : undefined,
-    background: background
+    borderColor: borderColor,
+    borderStyle: 'solid'
   }"
 >
-  <!-- Glare overlay -->
-  <div
-    #overlay
-    class="absolute inset-0 pointer-events-none z-10"
-    style="transition: opacity 0.3s ease;"
-  ></div>
-
-  <!-- Content (e.g., project card) -->
-  <div class="relative z-20">
-    <ng-content></ng-content>
-  </div>
+  <div #overlay></div>
+  <ng-content></ng-content>
 </div>
