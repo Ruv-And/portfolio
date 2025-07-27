@@ -50,3 +50,17 @@
     </div>
   </app-glare-card>
 </div>
+
+<div class="h-screen overflow-auto relative" (scroll)="onScroll($event)">
+  <app-fluid-glass
+    class="h-screen"
+    [modeProps]="{ scale: 0.2 }"
+    [navItems]="[
+      { label: 'Home', link: '' },
+      { label: 'About', link: '#about' },
+      { label: 'Contact', link: '#contact' }
+    ]"
+    [scrollProgress]="scrollProgress">
+  </app-fluid-glass>
+  <div class="h-[200vh]"></div>
+</div>

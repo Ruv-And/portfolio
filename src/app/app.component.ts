@@ -9,6 +9,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { AnimatedProjectsComponent } from './components/animated-projects/animated-projects.component';
 import { AnimatedProjectsComponent2 } from './components/animated-projects-2/animated-projects-2.component';
 import { GlareCardComponent } from './components/glare-card/glare-card.component';
+import { FluidGlassComponent } from './components/fluid-glass/fluid-glass.component';
 
 @Component({
   selector: 'app-root',
@@ -23,11 +24,19 @@ import { GlareCardComponent } from './components/glare-card/glare-card.component
     AnimatedProjectsComponent,
     AnimatedProjectsComponent2,
     GlareCardComponent,
-],
+    FluidGlassComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  scrollProgress = 0;
+  onScroll(e: Event) {
+    const el = e.target as HTMLElement;
+    this.scrollProgress = el.scrollTop / (el.scrollHeight - el.clientHeight);
+  }
+
+
   title = 'portfolio';
 
   projects = [
