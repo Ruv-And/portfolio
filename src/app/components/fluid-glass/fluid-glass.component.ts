@@ -46,7 +46,7 @@ export class FluidGlassComponent implements AfterViewInit, OnDestroy {
   private textMesh?: THREE.Mesh;
   private imgPlane?: THREE.Mesh;
 
-  constructor(private host: ElementRef, private ngZone: NgZone) {}
+  constructor(private host: ElementRef, private ngZone: NgZone) { }
 
   ngAfterViewInit() {
     const canvas = this.host.nativeElement.querySelector('canvas') as HTMLCanvasElement;
@@ -54,7 +54,7 @@ export class FluidGlassComponent implements AfterViewInit, OnDestroy {
     this.renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
 
     this.camera = new THREE.PerspectiveCamera(15, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-    this.camera.position.set(0, 0, 20);
+    this.camera.position.set(0, 0, 30);
     this.buffer = new THREE.WebGLRenderTarget(canvas.clientWidth, canvas.clientHeight);
 
     this.loadBarModeModel();
@@ -147,11 +147,11 @@ export class FluidGlassComponent implements AfterViewInit, OnDestroy {
       const ch = this.renderer.domElement.clientHeight;
       const vWidth = cw / ch * 2;
 
-      easing.damp3(mesh.position, [0, -1 + 0.2, 15], 0.15, 0.016);
+      easing.damp3(mesh.position, [0, -1.2, 20], 0.15, 0.016);
 
       if (props.scale == null) {
         const desired = (vWidth * 0.9) / mesh.userData['geoWidth'];
-        mesh.scale.setScalar(Math.min(0.15, desired));
+        mesh.scale.setScalar(Math.min(0.5, desired));
       } else {
         mesh.scale.setScalar(props.scale);
       }
@@ -172,9 +172,6 @@ export class FluidGlassComponent implements AfterViewInit, OnDestroy {
         }
       }
 
-      this.renderer.setRenderTarget(this.buffer!);
-      this.renderer.render(this.scene, this.camera);
-      this.renderer.setRenderTarget(null);
       this.renderer.setClearColor(0x5227ff, 1);
       this.renderer.render(this.scene, this.camera);
 
